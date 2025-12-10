@@ -1,1 +1,2 @@
 # Ang-Licdan-Tumasis-Q2
+#Our project, the Accountantulator, is all about being a miniature Accountant where in it solves common taxes that people pay every year. This includes our VAT when we buy items, Income tax when we recieve our paycheck, Medical tax whenever our insurance deducts our taxes for other areas, and many more. All it takes to use the Accountantulator are your numbers 0-9 as we aim to be as basic as we possible with the most satisfying outcome.
