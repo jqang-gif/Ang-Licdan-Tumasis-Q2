@@ -136,6 +136,11 @@ def main():
                                             produce["creation"] = "Altered"
                                         elif alteration == 3:
                                             produce["price"] = float(int("Input the new Price of Product"))
+                                            try:
+                                                produce["price"] = float(input("What is the price of your product"))
+                                                test = produce["price"] + 1
+                                            except ValueError:
+                                                produce["price"] = float(input('Please use a valid input'))
                                             produce["vatofproduct"] = produce["price"] * 0.12
                                             print(f"The VAT is {produce["vatofproduct"]:.2f} ")
                                             produce["minimumpriceforsale"] = produce["vatofproduct"] + produce[
@@ -144,8 +149,11 @@ def main():
                                                 f"The minimum price to gain profit is {produce["minimumpriceforsale"]:.2f} ")
                                             produce["creation"] = "Altered"
                                         elif alteration == 4:
-                                            produce["marketprice"] = float(
-                                                input("Enter the new value you want to sell the product at"))
+                                            try:
+                                                produce["marketprice"] = float(input("What is your income, format is numbers only no commas or spaces"))
+                                                test = produce["marketprice"] + 1
+                                            except ValueError:
+                                                produce["marketprice"] = int(input('Please use a valid input'))
                                             produce["profit"] = produce["marketprice"] - produce["minimumpriceforsale"]
                                             print(f"The new profit from one {produce["name"]} is {produce["profit"]}")
                                             produce["creation"] = "Altered"
@@ -153,7 +161,7 @@ def main():
                                             print("To check alterations go to the History of Accountantulator")
                                             alterloop = 1
                                         else:
-                                            print("Select one")
+                                            print("Select one of the valid")
                             if foundname == False:
                                 print("No product with that name")
                             alternativeloop = int(input("Continue Searching?\n1. Yes\n2. No "))
@@ -172,8 +180,13 @@ def main():
                         historynumber = historynumber + 1
                         newdict = {}
                         newdict["username"] = input("What is your name? ")
-                        newdict["income"] = int(
-                            input("What is your income, format is numbers only no commas or spaces"))
+
+                        try:
+                            newdict["income"] = int(input("What is your income, format is numbers only no commas or spaces"))
+                            test= newdict["income"]+ 1
+                        except ValueError:
+                            newdict["income"] = int(input('Please use a valid input'))
+
                         if newdict["income"] <= 250000:
                             newdict["incometax"] = 0
                             newdict["newincome"] = newdict["income"]
@@ -248,9 +261,12 @@ def main():
                                         if alternation == 1:
                                             person["username"] = input("What is you name?")
                                         elif alternation == 2:
-                                            person["income"] = int(
-                                                input(
-                                                    "What is your income, format is numbers only no commas or spaces"))
+                                            person["income"] = int(input("What is your income, format is numbers only no commas or spaces"))
+                                            try:
+                                                person["income"] = int(input("What is your income, format is numbers only no commas or spaces"))
+                                                test = person["income"] + 1
+                                            except ValueError:
+                                                person["income"] = int(input('Please use a valid input'))
                                             if person["income"] <= 250000:
                                                 person["incometax"] = 0
                                                 person["newincome"] = person["income"]
@@ -275,14 +291,18 @@ def main():
                                                 person["incometax"] = ((person["income"] - 8000000) * 0.35) + 2202500
                                                 person["newincome"] = person["income"] - person["incometax"]
                                         person["creation"] = "Altered"
+                                    else:
+                                        print("Use a valid input")
                                 if foundname == False:
                                     print("No product with that name")
                                 alternativeloop = int(input("Do you want to search again\n1. Yes\n2. No"))
 
-
+                    else:
+                        print("Please use a valid input")
             elif first == 3:
                 mainloop = 0
-
+            else:
+                print("Please use a valid input")
 
     except FileNotFoundError:
         print("Error: The file 'projectCS.json' was not found.")
