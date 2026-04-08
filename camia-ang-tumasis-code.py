@@ -19,18 +19,30 @@ def main():
                 loop = 1
                 while loop != 0:
                     option = int(input(
-                        "Welcome to the VAT part of the Accountantulator\nPlease pick the number of the  option that you want  to do\n1. Calculate VAT of product\n2. History of your Accountantulator\n3.How to use Accountantulator\n4. Find Product\n5. Alter Product\n6. Exit "))
+                        "Welcome to the VAT part of the Accountantulator\nPlease pick the number of the  option that you want  to do\n1. Calculate VAT of product\n2. History of your Accountantulator\n3. How to use Accountantulator\n4. Find Product\n5. Alter Product\n6. Exit "))
                     if option == 1:
                         historynumber = historynumber + 1
                         newdict = {}
                         newdict["username"] = input("What is your name? ")
                         newdict["name"] = input("What is the name of the product ")
-                        newdict["price"] = float(input(f"Enter value of {newdict["name"]} "))
+                        while True:
+                            newdict["price"] = input(f"Enter value of {newdict["name"]} ")
+                            try:
+                                newdict["price"] = float(newdict["price"])
+                                break
+                            except ValueError:
+                                print(f"Please input a number")
                         newdict["vatofproduct"] = newdict["price"] * 0.12
                         print(f"The VAT is {newdict["vatofproduct"]:.2f} ")
                         newdict["minimumpriceforsale"] = newdict["vatofproduct"] + newdict["price"] + 0.1
                         print(f"The minimum price to gain profit is {newdict["minimumpriceforsale"]:.2f} ")
-                        newdict["marketprice"] = float(input("Enter the value you want to sell the product at"))
+                        while True:
+                            newdict["marketprice"] = input("Enter the value you want to sell the product at")
+                            try:
+                                newdict["marketprice"] = float(newdict["marketprice"])
+                                break
+                            except ValueError:
+                                print(f"Please input a number")
                         newdict["profit"] = newdict["marketprice"] - newdict["minimumpriceforsale"]
                         print(f"The profit from one {newdict["name"]} is {newdict["profit"]:.2f}")
                         newdict["creation"] = "Created by User"
@@ -46,7 +58,14 @@ def main():
                                     time.sleep(0.1)
                                     print(f"{i.capitalize()}: {produce[i]}")
                                 print("")
-                            checkhistory = int(input("Return to Menu?\n1. No\n2. Yes"))
+                            while True:
+                                try:
+                                    checkhistory = (input("Return to Menu?\n1. No\n2. Yes"))
+                                    checkhistory = int(checkhistory)
+                                    if checkhistory == 1  or checkhistory == 2:
+                                        break
+                                except:
+                                    print("Use only 1 or 2")
 
 
                     elif option == 3:
@@ -61,7 +80,13 @@ def main():
                         sampledict["name"] = input("Input the name of your product")
                         print(f"The name of your product is {sampledict["name"]}")
                         time.sleep(0.5)
-                        sampledict["price"] = float(input("Now input the price of the product you have "))
+                        while True:
+                            sampledict["price"] = input(f"Enter value of {sampledict["name"]} ")
+                            try:
+                                sampledict["price"] = float(sampledict["price"])
+                                break
+                            except ValueError:
+                                print(f"Please input a number")
                         time.sleep(0.5)
                         sampledict["vatofproduct"] = sampledict["price"] * 0.12
                         print(f"You will now recieve the VAT of your product, which is {sampledict["vatofproduct"]}")
@@ -74,6 +99,13 @@ def main():
                         sampledict["marketprice"] = float(
                             input("Now you can appoint the price you are going to sell the product for accounting VAT"))
                         sampledict["profit"] = sampledict["marketprice"] - sampledict["minimumpriceforsale"]
+                        while True:
+                            sampledict["marketprice"] = input(f"Enter the price that you want to sell {sampledict["name"]} ")
+                            try:
+                                sampledict["marketprice"] = float(sampledict["marketprice"])
+                                break
+                            except ValueError:
+                                print(f"Please input a number")
                         time.sleep(2)
                         print(
                             f"Lastly, the Accountantulator will give you the profit per product sold, for the sample you provided it is {sampledict["profit"]}")
@@ -108,7 +140,14 @@ def main():
                                         print(f"{i.capitalize()}: {produce[i]}")
                             if foundname == False:
                                 print("No product with that name")
-                            alternativeloop = int(input("Continue Searching?\n1. Yes\n2. No "))
+                            while True:
+                                try:
+                                    alternativeloop = (input("Continue Searching?\n1. Yes\n2. No "))
+                                    alternativeloop = int(alternativeloop)
+                                    if alternativeloop == 1  or alternativeloop == 2:
+                                        break
+                                except:
+                                    print("Use only 1 or 2")
 
 
                     elif option == 5:
@@ -135,12 +174,13 @@ def main():
                                             produce["name"] = input("Input new product name")
                                             produce["creation"] = "Altered"
                                         elif alteration == 3:
-                                            produce["price"] = float(int("Input the new Price of Product"))
-                                            try:
-                                                produce["price"] = float(input("What is the price of your product"))
-                                                test = produce["price"] + 1
-                                            except ValueError:
-                                                produce["price"] = float(input('Please use a valid input'))
+                                            while True:
+                                                produce["price"] = input("Please enter a new price: ")
+                                                try:
+                                                    produce["price"] = float(produce["price"])
+                                                    break
+                                                except ValueError:
+                                                    print(f"Please input a number")
                                             produce["vatofproduct"] = produce["price"] * 0.12
                                             print(f"The VAT is {produce["vatofproduct"]:.2f} ")
                                             produce["minimumpriceforsale"] = produce["vatofproduct"] + produce[
@@ -149,11 +189,13 @@ def main():
                                                 f"The minimum price to gain profit is {produce["minimumpriceforsale"]:.2f} ")
                                             produce["creation"] = "Altered"
                                         elif alteration == 4:
-                                            try:
-                                                produce["marketprice"] = float(input("What is your income, format is numbers only no commas or spaces"))
-                                                test = produce["marketprice"] + 1
-                                            except ValueError:
-                                                produce["marketprice"] = int(input('Please use a valid input'))
+                                            while True:
+                                                produce["marketprice"] = input("Please enter a valid price: ")
+                                                try:
+                                                    produce["price"] = float(produce["marketprice"])
+                                                    break
+                                                except ValueError:
+                                                    print(f"Please input a number")
                                             produce["profit"] = produce["marketprice"] - produce["minimumpriceforsale"]
                                             print(f"The new profit from one {produce["name"]} is {produce["profit"]}")
                                             produce["creation"] = "Altered"
@@ -164,7 +206,14 @@ def main():
                                             print("Select one of the valid")
                             if foundname == False:
                                 print("No product with that name")
-                            alternativeloop = int(input("Continue Searching?\n1. Yes\n2. No "))
+                            while True:
+                                try:
+                                    alternativeloop = (input("Return to Menu?\n1. No\n2. Yes"))
+                                    alternativeloop = int(checkhistory)
+                                    if alternativeloop == 1 or alternativeloop == 2:
+                                        break
+                                except:
+                                    print("Use only 1 or 2")
 
                     elif option == 6:
                         print("Back to Main loop")
@@ -225,7 +274,14 @@ def main():
                                     time.sleep(0.1)
                                     print(f"{i.capitalize()}: {produce[i]}")
                                 print("")
-                            checkhistory = int(input("Return to Menu?\n1. No\n2. Yes"))
+                            while True:
+                                try:
+                                    checkhistory = (input("Return to Menu?\n1. No\n2. Yes"))
+                                    checkhistory = int(checkhistory)
+                                    if checkhistory == 1 or checkhistory == 2:
+                                        break
+                                except:
+                                    print("Use only 1 or 2")
 
                     elif option == 3:
                         foundname = False
@@ -242,7 +298,14 @@ def main():
                                         print(f"{i.capitalize()}: {person[i]}")
                             if foundname == False:
                                 print("No product with that name")
-                            alternativeloop = int(input("Continue Searching?\n1. Yes\n2. No "))
+                            while True:
+                                try:
+                                    alternativeloop = (input("Continue Searching?\n1. Yes\n2. No "))
+                                    alternativeloop = int(alternativeloop)
+                                    if alternativeloop == 1 or alternativeloop == 2:
+                                        break
+                                except:
+                                    print("Use only 1 or 2")
 
                     elif option == 4:
                         alternation = 0
@@ -258,15 +321,16 @@ def main():
                                     print(f"Printing Data for {nameofindinctax}")
                                     while alterloop == 0:
                                         alteration = int(input("What do you want to alternate\n1.Username\n2.Income"))
-                                        if alternation == 1:
+                                        if alteration == 1:
                                             person["username"] = input("What is you name?")
-                                        elif alternation == 2:
-                                            person["income"] = int(input("What is your income, format is numbers only no commas or spaces"))
-                                            try:
-                                                person["income"] = int(input("What is your income, format is numbers only no commas or spaces"))
-                                                test = person["income"] + 1
-                                            except ValueError:
-                                                person["income"] = int(input('Please use a valid input'))
+                                        elif alteration == 2:
+                                            while True:
+                                                person["income"] = input("Please enter a new price: ")
+                                                try:
+                                                    person["icome"] = float(person["income"])
+                                                    break
+                                                except ValueError:
+                                                    print(f"Please input a number")
                                             if person["income"] <= 250000:
                                                 person["incometax"] = 0
                                                 person["newincome"] = person["income"]
@@ -292,11 +356,9 @@ def main():
                                                 person["newincome"] = person["income"] - person["incometax"]
                                         person["creation"] = "Altered"
                                     else:
-                                        print("Use a valid input")
+                                        print(" Please use a valid input")
                                 if foundname == False:
                                     print("No product with that name")
-                                alternativeloop = int(input("Do you want to search again\n1. Yes\n2. No"))
-
                     else:
                         print("Please use a valid input")
             elif first == 3:
