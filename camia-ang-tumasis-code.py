@@ -64,7 +64,7 @@ def main():
                                     checkhistory = int(checkhistory)
                                     if checkhistory == 1  or checkhistory == 2:
                                         break
-                                except:
+                                except ValueError:
                                     print("Use only 1 or 2")
 
 
@@ -146,7 +146,7 @@ def main():
                                     alternativeloop = int(alternativeloop)
                                     if alternativeloop == 1  or alternativeloop == 2:
                                         break
-                                except:
+                                except ValueError:
                                     print("Use only 1 or 2")
 
 
@@ -209,10 +209,10 @@ def main():
                             while True:
                                 try:
                                     alternativeloop = (input("Return to Menu?\n1. No\n2. Yes"))
-                                    alternativeloop = int(checkhistory)
+                                    alternativeloop = int(alternativeloop)
                                     if alternativeloop == 1 or alternativeloop == 2:
                                         break
-                                except:
+                                except ValueError:
                                     print("Use only 1 or 2")
 
                     elif option == 6:
@@ -280,7 +280,7 @@ def main():
                                     checkhistory = int(checkhistory)
                                     if checkhistory == 1 or checkhistory == 2:
                                         break
-                                except:
+                                except ValueError:
                                     print("Use only 1 or 2")
 
                     elif option == 3:
@@ -304,7 +304,7 @@ def main():
                                     alternativeloop = int(alternativeloop)
                                     if alternativeloop == 1 or alternativeloop == 2:
                                         break
-                                except:
+                                except ValueError:
                                     print("Use only 1 or 2")
 
                     elif option == 4:
