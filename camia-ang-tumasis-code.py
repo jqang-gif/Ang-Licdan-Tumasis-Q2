@@ -327,7 +327,7 @@ def main():
                                             while True:
                                                 person["income"] = input("Please enter a new price: ")
                                                 try:
-                                                    person["icome"] = float(person["income"])
+                                                    person["income"] = float(person["income"])
                                                     break
                                                 except ValueError:
                                                     print(f"Please input a number")
